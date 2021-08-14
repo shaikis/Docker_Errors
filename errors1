@@ -1,0 +1,13 @@
+Docker failed with the error: Error response from daemon: error creating overlay mount to invalid argument
+
+// the fix is to edit /etc/docker/daemon.json file and add below content to it:
+
+{ "storage-driver": "devicemapper" }
+ 
+
+Reload the systemctl daemon:
+
+systemctl daemon-reload
+And restart docker service:
+
+systemctl restart docker
